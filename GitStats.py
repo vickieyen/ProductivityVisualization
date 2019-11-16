@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # DO NOT PUSH TOKEN, DELETE BEFORE PUSHING
-token = "4dbd74599404d9bce28a9ee9440d8100f44bcd13"
+token = ""
 g = Github(token)
 
 repo = g.get_user().get_repo("ExamGenerator")
