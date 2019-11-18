@@ -26,19 +26,19 @@ class Class:
 
     def parse_name(self, tree):
         self.name = tree.types[0].name.encode("utf-8")
-        print(self.name)
+        # print(self.name)
 
     def parse_implements(self, tree):
         implements = tree.types[0].implements
         if (implements):
             self.implements = implements.name.encode("utf-8")
-        print(self.implements)
+        # print(self.implements)
 
     def parse_extends(self, tree):
         extends = tree.types[0].extends
         if (extends):
             self.extends = extends.name.encode("utf-8")
-        print(self.extends)
+        # print(self.extends)
     
     def parse_field(self, field_dec):
         field = Field()
@@ -55,7 +55,7 @@ class Class:
         field.var_type = field_dec.type.name.encode("utf-8")
 
         self.fields.append(field)
-        print(vars(field))
+        # print(vars(field))
 
     def parse_method(self, method_dec):
         method = Method()
@@ -82,23 +82,26 @@ class Class:
         # set return type
         method.return_type = "void"
         if (method_dec.return_type):
-            method.return_type = method_dec.return_type
+            method.return_type = method_dec.return_type.name.encode("utf-8")
 
         self.methods.append(method)
-        print(vars(method))
+        # print(vars(method))
 
     # feed names of the classes that you want to find dependencies for
     # and it will return the class names that it depends on
     def find_dependencies(self, class_names):
-        result = []
         tokens = list(javalang.tokenizer.tokenize(self.file))
         for token in tokens:
             if (isinstance(token, javalang.tokenizer.Identifier)):
                 token_type = token.value.encode("utf-8")
                 if (token_type in class_names):
-                    result.append(token_type)
-        print(result)
-        return result
+                    self.dependencies.append(token_type)
+
+        # remove duplicates
+        self.dependencies = list(dict.fromkeys(self.dependencies))
+
+        # remove itself
+        self.dependencies.remove(self.name)
 
 class Field:
     pass
