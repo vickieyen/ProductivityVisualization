@@ -1,0 +1,5 @@
+PyGithub
+gitpython
+matplotlib
+javalang
+pydriller
