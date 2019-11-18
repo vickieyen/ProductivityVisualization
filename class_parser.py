@@ -14,6 +14,19 @@ class Class:
         # parse class using tree provided
         self.parse()
 
+    def __repr__(self):
+        result = "CLASS - " + self.name + "\n"
+        for field in self.fields:
+            result += "     FIELDS - " + repr(field) + "\n"
+        result += "\n"
+        for method in self.methods:
+            result += "     METHODS - " + repr(method) + "\n"
+        result += "\n"
+        for dependency in self.dependencies:
+            result += "     DEPENDENCIES - " + dependency + "\n"
+        result += "\n"
+        return result
+
     def parse(self):
         self.parse_name(self.tree)
         self.parse_implements(self.tree)
@@ -104,7 +117,15 @@ class Class:
         self.dependencies.remove(self.name)
 
 class Field:
-    pass
+    def __repr__(self):
+        result = "name: " + self.name + " / "        
+        result += "access: " + self.access + " / "
+        result += "type: " + self.var_type
+        return result
 
 class Method:
-    pass
+    def __repr__(self):
+        result = "name: " + self.name + " / "
+        result += "access: " + self.access + " / "
+        result += "return type: " + self.return_type
+        return result
