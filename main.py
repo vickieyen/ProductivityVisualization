@@ -1,6 +1,7 @@
 import os
 
 from class_parser import Class
+from dependencyAnalysis import analyzeCommitDependency
 
 def read_as_text(filename):
     with open(filename, 'r') as f:
@@ -27,6 +28,9 @@ for class_found in classes:
 for class_found in classes:
     class_found.find_dependencies(class_names)
 
-# print for debug
+#  print for debug
 for class_found in classes:
     print(class_found)
+
+# analyze commit dependency
+analyzeCommitDependency("fdf91471bb4ac3e04eb7fce04d9d34216dc08c79", classes, 0.5 )
