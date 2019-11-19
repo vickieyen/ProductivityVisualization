@@ -9,6 +9,7 @@ def read_as_text(filename):
 
 classes = []
 
+# local repo path
 root_dir = "../Project 1/src"
 
 # create Class objects from all .java files in root directory
