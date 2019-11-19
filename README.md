@@ -1,5 +1,5 @@
-# ProductivityVisualization
-A program that scrapes github repos to output productivity visualizations
+# Dependency Visualization
+A program that scrapes github repos to output analysis of dependencies
 ### Requirements
 ```
 python 3.4+
