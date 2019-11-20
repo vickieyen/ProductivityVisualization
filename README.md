@@ -12,6 +12,7 @@ pip install matplotlib
           brew install freetype
 pip install javalang
 pip install plantuml
+pip install PyGithub
 
 OR
 
