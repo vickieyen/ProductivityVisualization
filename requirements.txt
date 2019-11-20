@@ -2,3 +2,5 @@ PyGithub
 gitpython
 matplotlib
 javalang
+plyj
+plantuml
