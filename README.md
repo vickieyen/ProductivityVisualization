@@ -11,6 +11,7 @@ pip install matplotlib
     Note: may need to isntall system requirements 
           brew install freetype
 pip install javalang
+pip install plantuml
 
 OR
 
