@@ -2,3 +2,4 @@ PyGithub
 matplotlib
 javalang
 plantuml
+networkx
