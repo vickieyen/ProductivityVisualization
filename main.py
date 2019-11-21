@@ -3,6 +3,8 @@ import os
 from class_parser import Class
 from dependencyAnalysis import analyzeCommitDependency
 from uml_diagram import generate_uml
+from dependency_graph import draw_dependency_graph
+
 def read_as_text(filename):
     with open(filename, 'r') as f:
         return f.read()
@@ -30,8 +32,8 @@ for class_found in classes:
     class_found.find_dependencies(class_names)
 
 #  print for debug
-for class_found in classes:
-    print(class_found)
+# for class_found in classes:
+#     print(class_found)
 
 # analyze commit dependency
 analyzeCommitDependency("fdf91471bb4ac3e04eb7fce04d9d34216dc08c79", classes, 0.5 )
@@ -39,3 +41,6 @@ analyzeCommitDependency("fdf91471bb4ac3e04eb7fce04d9d34216dc08c79", classes, 0.5
 # generate uml diagram from parsed classes
 uml_output_txt_file_name = "uml_output.txt"
 generate_uml(classes, uml_output_txt_file_name)
+
+# draw dependency diagram
+draw_dependency_graph(classes)
