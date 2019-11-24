@@ -1,4 +1,5 @@
 import plantuml
+from PIL import Image
 
 f = None
 
@@ -55,6 +56,21 @@ def generate_uml(classes_found, output_file):
     replace_in_file(output_file, "protected", "#");
     replace_in_file(output_file, "public", "~");
 
+def insert_legend():
+    image = Image.open("uml_diagram.png")
+    legend = Image.open("uml_legend.png")
+    legend = legend.resize((int(legend.size[0]*0.3) , int(legend.size[1]*0.3)))
+
+    image_copy = image.copy()
+    position = ((image_copy.width - legend.width), (image_copy.height - legend.height))
+
+    image.paste(legend, position)
+
+    #Saved in the same relative location
+    image.save("uml_diagram.png")
+
 
 plantuml = plantuml.PlantUML("http://www.plantuml.com/plantuml/img/")
 plantuml.processes_file("./uml_output.txt", "./uml_diagram.png")
+
+insert_legend()
