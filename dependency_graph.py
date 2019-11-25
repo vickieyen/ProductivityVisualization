@@ -1,7 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-def draw_dependency_graph(classes):
+def draw_dependency_graph(classes, analysis):
     G = nx.DiGraph(directed=True)
     nx.to_directed(G)
 
@@ -28,4 +28,5 @@ def draw_dependency_graph(classes):
         'arrowsize': 12,
     }
     nx.draw(G, **options)
+    plt.annotate(analysis, (-1,1.25))
     plt.savefig("dependency_graph.png")
