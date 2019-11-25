@@ -10,8 +10,6 @@ repo = g.get_user().get_repo("ExamGenerator")
 
 if __name__ == '__main__':
     commits = repo.get_commits().reversed
-    # commit_additions = []
-    # commit_deletions = []
     commit_authors = []
     commit_lines = []
     commit_dates = []
@@ -46,7 +44,6 @@ if __name__ == '__main__':
         text = "%s Changes:" % (commit_dates[index])
         for key in commit_authors[index]:
             author = key
-            print(key)
             additions = commit_authors[index][author]["additions"]
             deletions = commit_authors[index][author]["deletions"]
             text += "\n\nLines added: %s\nLines deleted: %s\nModified by: %s" % (additions, deletions, author)
@@ -58,7 +55,7 @@ if __name__ == '__main__':
         annot.xy = (index, y_coord)
         text = annotation_text(index)
         annot.set_text(text)
-        annot.set_fontsize('xx-small')
+        annot.set_fontsize('medium')
 
         annot_x = 50
         annot_y = mid_y - y_coord
@@ -87,4 +84,3 @@ if __name__ == '__main__':
     fig.canvas.mpl_connect("button_press_event", onclick)
     fig.tight_layout()
     plt.show()
-    
